@@ -1,0 +1,5 @@
+[user]
+	email = amin.saied@gmail.com
+	name = amin
+[core]
+	excludefile = .gitignore_global

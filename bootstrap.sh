@@ -7,3 +7,6 @@ ln -s ${BASEDIR}/.bashrc ~/.bashrc
 
 # zsh
 ln -s ${BASEDIR}/.zshrc ~/.zshrc
+
+# git
+ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
