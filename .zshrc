@@ -101,5 +101,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias gs="git status"
-alias ga="git add"
+alias ga="git add ."
 alias cdr="cd ~/repos"
