@@ -10,3 +10,6 @@ ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # git
 ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
+
+# tmux
+ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
