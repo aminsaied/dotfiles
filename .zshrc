@@ -105,6 +105,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cdr="cd ~/repos"
+alias see-ssh.pub="less ~/.ssh/id_rsa.pub"
 ## commonly edited files
 edit-zsh () {
 	if [ $# -ne 0 ]; then
@@ -115,8 +116,16 @@ edit-zsh () {
 }
 ## usage: $ edit-zsh code
 ## this will open the ~/.zshrc file in vs code
+edit-ssh () {
+	if [ $# -ne 0 ]; then
+		$1 ~/.ssh/config
+	else
+		nano ~/.ssh/config
+	fi
+}
 ## git
 alias gs="git status -sb"
 alias ga="git add ."
+alias gc="git commit -m"
 ## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
