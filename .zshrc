@@ -116,7 +116,7 @@ edit-zsh () {
 ## usage: $ edit-zsh code
 ## this will open the ~/.zshrc file in vs code
 ## git
-alias gs="git status"
+alias gs="git status -sb"
 alias ga="git add ."
 ## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
