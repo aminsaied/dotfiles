@@ -100,8 +100,23 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases
+## navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cdr="cd ~/repos"
+## commonly edited files
+edit-zsh () {
+	if [ $# -ne 0 ]; then
+		$1 ~/.zshrc
+	else
+		nano ~/.zshrc
+	fi
+}
+## usage: $ edit-zsh code
+## this will open the ~/.zshrc file in vs code
+## git
 alias gs="git status"
 alias ga="git add ."
-alias cdr="cd ~/repos"
-# from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
+## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
