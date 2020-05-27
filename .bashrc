@@ -122,3 +122,4 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:/home/amin/.local/bin
+source /home/amin/.config/broot/launcher/bash/br

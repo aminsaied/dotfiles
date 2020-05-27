@@ -69,7 +69,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -129,3 +132,5 @@ alias ga="git add ."
 alias gc="git commit -m"
 ## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+source /home/amin/.config/broot/launcher/bash/br
