@@ -107,7 +107,6 @@ source $ZSH/oh-my-zsh.sh
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias cdr="cd ~/repos"
 alias see-ssh.pub="less ~/.ssh/id_rsa.pub"
 ## commonly edited files
 edit-zsh () {
@@ -124,6 +123,16 @@ edit-ssh () {
 		$1 ~/.ssh/config
 	else
 		nano ~/.ssh/config
+	fi
+}
+
+# helpers for repos
+alias lsr="ls ~/repos"
+cdr () {
+	if [ $# -ne 0 ]; then
+		cd ~/repos/$1
+	else
+		cd ~/repos
 	fi
 }
 ## git
