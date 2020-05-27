@@ -127,5 +127,8 @@ edit-ssh () {
 alias gs="git status -sb"
 alias ga="git add ."
 alias gc="git commit -m"
+alias gpull="git pull"
+alias gpush="git push"
+alias gcheck="git checkout"
 ## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
