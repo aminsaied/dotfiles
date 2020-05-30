@@ -69,7 +69,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,7 +107,6 @@ source $ZSH/oh-my-zsh.sh
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias cdr="cd ~/repos"
 alias see-ssh.pub="less ~/.ssh/id_rsa.pub"
 ## commonly edited files
 edit-zsh () {
@@ -121,6 +123,16 @@ edit-ssh () {
 		$1 ~/.ssh/config
 	else
 		nano ~/.ssh/config
+	fi
+}
+
+# helpers for repos
+alias lsr="ls ~/repos"
+cdr () {
+	if [ $# -ne 0 ]; then
+		cd ~/repos/$1
+	else
+		cd ~/repos
 	fi
 }
 ## git
@@ -143,3 +155,5 @@ proj () {
                 echo bye
         fi
 }
+
+source /home/amin/.config/broot/launcher/bash/br
