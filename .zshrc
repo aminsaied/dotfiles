@@ -132,3 +132,14 @@ alias gpush="git push"
 alias gcheck="git checkout"
 ## from https://github.com/SwapneelM/dotfiles/blob/master/.zshrchttps://github.com/SwapneelM/dotfiles
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+# project specific shortcuts and commands
+# these should be updated regularly
+alias pr-eglue-omr="echo opening matrix repo && cd ~/repos/matrix-compliant/src/ODIN-ML/Partner/ENLRProject/EGLUE/ && git checkout amsaied/eglue"
+proj () {
+	if [ "$1" == "ls" ]; then
+                echo hi
+        else
+                echo bye
+        fi
+}
