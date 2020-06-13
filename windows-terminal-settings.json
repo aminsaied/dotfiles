@@ -1,7 +1,3 @@
-
-// To view the default settings, hold "alt" while clicking on the "Settings" button.
-// For documentation on these settings, see: https://aka.ms/terminal-documentation
-
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
   
@@ -9,7 +5,6 @@
   
     "profiles": [
       {
-        // Make changes here to the powershell.exe profile
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "name": "Windows PowerShell",
         "commandline": "powershell.exe",
@@ -19,7 +14,6 @@
         "acrylicOpacity": 0.5
       },
       {
-        // Make changes here to the cmd.exe profile
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "name": "cmd",
         "commandline": "cmd.exe",
@@ -38,11 +32,11 @@
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
         "hidden": false,
         "name": "Azure Cloud Shell",
+        "colorScheme": "Django",
         "source": "Windows.Terminal.Azure"
       }
     ],
   
-    // Add custom color schemes to this array
     "schemes": [
       {
         "name": "Cobalt2",
@@ -106,11 +100,30 @@
         "brightWhite": "#0a6c7e",
         "background": "#1c0c28",
         "foreground": "#babab9"
+      },
+      {
+        "name": "Django",
+        "black": "#000000",
+        "red": "#fd6209",
+        "green": "#41a83e",
+        "yellow": "#ffe862",
+        "blue": "#245032",
+        "purple": "#f8f8f8",
+        "cyan": "#9df39f",
+        "white": "#ffffff",
+        "brightBlack": "#323232",
+        "brightRed": "#ff943b",
+        "brightGreen": "#73da70",
+        "brightYellow": "#ffff94",
+        "brightBlue": "#568264",
+        "brightPurple": "#ffffff",
+        "brightCyan": "#cfffd1",
+        "brightWhite": "#ffffff",
+        "background": "#0b2f20",
+        "foreground": "#f8f8f8"
       }
     ],
   
-    // Add any keybinding overrides to this array.
-    // To unbind a default keybinding, set the command to "unbound"
     "keybindings": []
   }
   
