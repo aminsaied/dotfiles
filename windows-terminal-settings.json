@@ -1,0 +1,95 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+  
+    "defaultProfile": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+  
+    "profiles": [
+      {
+        // Make changes here to the powershell.exe profile
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "Windows PowerShell",
+        "commandline": "powershell.exe",
+        "hidden": false,
+        "colorScheme": "Cobalt2",
+        "useAcrylic": true,
+        "acrylicOpacity": 0.9
+      },
+      {
+        // Make changes here to the cmd.exe profile
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "name": "cmd",
+        "commandline": "cmd.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+        "hidden": false,
+        "name": "Ubuntu-18.04",
+        "source": "Windows.Terminal.Wsl",
+        "colorScheme": "Ubuntu",
+        "useAcrylic": true,
+        "acrylicOpacity": 0.9
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": false,
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
+      }
+    ],
+  
+    // Add custom color schemes to this array
+    "schemes": [
+      {
+        "name": "Cobalt2",
+        "black": "#000000",
+        "red": "#ff0000",
+        "green": "#38de21",
+        "yellow": "#ffe50a",
+        "blue": "#1460d2",
+        "purple": "#ff005d",
+        "cyan": "#00bbbb",
+        "white": "#bbbbbb",
+        "brightBlack": "#555555",
+        "brightRed": "#f40e17",
+        "brightGreen": "#3bd01d",
+        "brightYellow": "#edc809",
+        "brightBlue": "#5555ff",
+        "brightPurple": "#ff55ff",
+        "brightCyan": "#6ae3fa",
+        "brightWhite": "#ffffff",
+        "background": "#132738",
+        "foreground": "#ffffff"
+      },
+      {
+        "name": "Ubuntu",
+        "black": "#2e3436",
+        "red": "#cc0000",
+        "green": "#4e9a06",
+        "yellow": "#c4a000",
+        "blue": "#3465a4",
+        "purple": "#75507b",
+        "cyan": "#06989a",
+        "white": "#d3d7cf",
+        "brightBlack": "#555753",
+        "brightRed": "#ef2929",
+        "brightGreen": "#8ae234",
+        "brightYellow": "#fce94f",
+        "brightBlue": "#729fcf",
+        "brightPurple": "#ad7fa8",
+        "brightCyan": "#34e2e2",
+        "brightWhite": "#eeeeec",
+        "background": "#300a24",
+        "foreground": "#eeeeec"
+      }
+    ],
+  
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": []
+  }
+  
