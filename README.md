@@ -59,4 +59,4 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
 
 ## Windows Terminal Settings
 
-I've included my settings for Windows Terminal. Unfortunately there is no magic syncing here, just meant for inspiration. You can edit your settings directly from 
+I've included my settings for Windows Terminal. Unfortunately there is no magic syncing here, just meant for inspiration. You can edit your settings directly from the windows terminal by selecting "Settings" from the drop down menu.
