@@ -55,4 +55,8 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
     sudo mv /mnt/c/Users/<USER-NAME>/Downloads/broot /usr/local/bin/
     ```
 4. Set `broot` to be executable with `chmod +x broot`
-5. Finally, attempt to run `broot` and you will be met with the promt to download https://github.com/Canop/broot. In particular, this will write the `br` shell function in `/home/<user>/.local/share/broot/launcher/bash/1` which is referenced in the `.zshrc` config.
+5. Finally, attempt to run `broot` and you will be met with the prompt to download https://github.com/Canop/broot. In particular, this will write the `br` shell function in `/home/<user>/.local/share/broot/launcher/bash/1` which is referenced in the `.zshrc` config.
+
+## Windows Terminal Settings
+
+I've included my settings for Windows Terminal. Unfortunately there is no magic syncing here, just old-fashioned copy-pasting for now.
