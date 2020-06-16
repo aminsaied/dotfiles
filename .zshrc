@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
+# put miniconda on the PATH
+export PATH=~/miniconda/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/amin/.oh-my-zsh"
 
@@ -148,8 +151,41 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 # project specific shortcuts and commands
 # these should be updated regularly
 proj-ls() {
+	echo "System"
+	echo "    proj-system-asynceglue 6"
+	echo "        alias async"
+	echo "    proj-system-teams 6"
+	echo "        alias teams"
+
 	echo "Projects: proj-eglue"
-	echo "proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
+	echo "    proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
+}
+
+proj-system-asynceglue() {
+	cd ~/repos/system
+        if [ $# -ne 0 ]; then
+                nano docs/projects/2020.06.AsyncEglue/$1.md
+        else
+                cd docs/projects/2020.06.AsyncEglue
+        fi 
+}
+
+alias async="proj-system-asynceglue 6"
+
+proj-system-teams() {
+        cd ~/repos/system
+        if [ $# -ne 0 ]; then
+                nano docs/projects/2020.06.Teams/$1.md
+        else
+                cd docs/projects/2020.06.Teams
+        fi
+}
+
+alias teams="proj-system-teams 6"
+proj-system-live() {
+	cd ~/repos/system
+	conda activate mkdocs-env
+	mkdocs serve -a localhost:8088
 }
 
 proj-eglue-omr() {
@@ -160,3 +196,19 @@ proj-eglue-omr() {
 }
 
 source /home/amin/.config/broot/launcher/bash/br
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/amin/miniconda/etc/profile.d/conda.sh" ]; then
+        . "/home/amin/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/amin/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
