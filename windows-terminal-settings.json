@@ -1,0 +1,129 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+  
+    "defaultProfile": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+  
+    "profiles": [
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "Windows PowerShell",
+        "commandline": "powershell.exe",
+        "hidden": false,
+        "colorScheme": "BlueBerryPie",
+        "useAcrylic": true,
+        "acrylicOpacity": 0.5
+      },
+      {
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "name": "cmd",
+        "commandline": "cmd.exe",
+        "hidden": false
+      },
+      {
+        "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+        "hidden": false,
+        "name": "Ubuntu-18.04",
+        "source": "Windows.Terminal.Wsl",
+        "colorScheme": "Ubuntu",
+        "useAcrylic": true,
+        "acrylicOpacity": 0.9
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": false,
+        "name": "Azure Cloud Shell",
+        "colorScheme": "Django",
+        "source": "Windows.Terminal.Azure"
+      }
+    ],
+  
+    "schemes": [
+      {
+        "name": "Cobalt2",
+        "black": "#000000",
+        "red": "#ff0000",
+        "green": "#38de21",
+        "yellow": "#ffe50a",
+        "blue": "#1460d2",
+        "purple": "#ff005d",
+        "cyan": "#00bbbb",
+        "white": "#bbbbbb",
+        "brightBlack": "#555555",
+        "brightRed": "#f40e17",
+        "brightGreen": "#3bd01d",
+        "brightYellow": "#edc809",
+        "brightBlue": "#5555ff",
+        "brightPurple": "#ff55ff",
+        "brightCyan": "#6ae3fa",
+        "brightWhite": "#ffffff",
+        "background": "#132738",
+        "foreground": "#ffffff"
+      },
+      {
+        "name": "Ubuntu",
+        "black": "#2e3436",
+        "red": "#cc0000",
+        "green": "#4e9a06",
+        "yellow": "#c4a000",
+        "blue": "#3465a4",
+        "purple": "#75507b",
+        "cyan": "#06989a",
+        "white": "#d3d7cf",
+        "brightBlack": "#555753",
+        "brightRed": "#ef2929",
+        "brightGreen": "#8ae234",
+        "brightYellow": "#fce94f",
+        "brightBlue": "#729fcf",
+        "brightPurple": "#ad7fa8",
+        "brightCyan": "#34e2e2",
+        "brightWhite": "#eeeeec",
+        "background": "#300a24",
+        "foreground": "#eeeeec"
+      },
+      {
+        "name": "BlueBerryPie",
+        "black": "#0a4c62",
+        "red": "#99246e",
+        "green": "#5cb1b3",
+        "yellow": "#eab9a8",
+        "blue": "#90a5bd",
+        "purple": "#9d54a7",
+        "cyan": "#7e83cc",
+        "white": "#f0e8d6",
+        "brightBlack": "#201637",
+        "brightRed": "#c87272",
+        "brightGreen": "#0a6c7e",
+        "brightYellow": "#7a3188",
+        "brightBlue": "#39173d",
+        "brightPurple": "#bc94b7",
+        "brightCyan": "#5e6071",
+        "brightWhite": "#0a6c7e",
+        "background": "#1c0c28",
+        "foreground": "#babab9"
+      },
+      {
+        "name": "Django",
+        "black": "#000000",
+        "red": "#fd6209",
+        "green": "#41a83e",
+        "yellow": "#ffe862",
+        "blue": "#245032",
+        "purple": "#f8f8f8",
+        "cyan": "#9df39f",
+        "white": "#ffffff",
+        "brightBlack": "#323232",
+        "brightRed": "#ff943b",
+        "brightGreen": "#73da70",
+        "brightYellow": "#ffff94",
+        "brightBlue": "#568264",
+        "brightPurple": "#ffffff",
+        "brightCyan": "#cfffd1",
+        "brightWhite": "#ffffff",
+        "background": "#0b2f20",
+        "foreground": "#f8f8f8"
+      }
+    ],
+  
+    "keybindings": []
+  }
+  
