@@ -154,8 +154,10 @@ proj-ls() {
 	echo "System"
 	echo "    proj-system-asynceglue 6"
 	echo "        alias async"
-	echo "    proj-system-teams 6"
-	echo "        alias teams"
+	echo "    proj-system-amlds 6"
+	echo "        alias amlds"
+        echo "    proj-system-teams 6"
+        echo "        alias teams"
 
 	echo "Projects: proj-eglue"
 	echo "    proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
@@ -182,19 +184,33 @@ proj-system-teams() {
 }
 
 alias teams="proj-system-teams 6"
-proj-system-live() {
+
+proj-system-amlds() {
+        cd ~/repos/system
+        if [ $# -ne 0 ]; then
+                nano docs/projects/AMLDS/$1.md
+        else
+                cd docs/projects/AMLDS
+        fi
+}
+
+alias amlds="proj-system-amlds 6"
+
+
+# start mkdocs servers
+serve-dsref() {
+        cd ~/repos/dsref
+        conda activate mkdocs-env
+        mkdocs serve -a localhost:8888
+}
+
+serve-system() {
 	cd ~/repos/system
 	conda activate mkdocs-env
 	mkdocs serve -a localhost:8088
 }
 
-proj-eglue-omr() {
-	echo "Opening EGLUE in Matrix repo"
-	cd ~/repos/matrix-compliant/src/ODIN-ML/Partner/ENLRProject/EGLUE/
-	echo "Checking out amsaied/eglue"
-	git checkout amsaied/eglue
-}
-
+# this is wip
 live() {
 tmux \
     new-session  'teams' \; \
