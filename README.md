@@ -57,6 +57,22 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
 4. Set `broot` to be executable with `chmod +x broot`
 5. Finally, attempt to run `broot` and you will be met with the prompt to download https://github.com/Canop/broot. In particular, this will write the `br` shell function in `/home/<user>/.local/share/broot/launcher/bash/1` which is referenced in the `.zshrc` config.
 
+## Conda environments
+
+Bringing my conda environment yaml files with me. Build an environment `env.yml` with:
+
+```bash
+conda env create -f env.yml
+```
+
+And update with:
+
+```bash
+conda env update -f env.yml --prune
+```
+
+where the ``--prune`` flag will remove any dependencies that are no longer required.
+
 ## Windows Terminal Settings
 
 I've included my settings for Windows Terminal. Unfortunately there is no magic syncing here, just meant for inspiration. You can edit your settings directly from the windows terminal by selecting "Settings" from the drop down menu.
