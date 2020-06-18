@@ -195,12 +195,6 @@ proj-eglue-omr() {
 	git checkout amsaied/eglue
 }
 
-foo() {
-	cd ~/repos/dsref
-	pipenv shell
-	mkdocs serve
-}
-
 source /home/amin/.config/broot/launcher/bash/br
 
 # >>> conda initialize >>>
