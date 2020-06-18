@@ -195,6 +195,13 @@ proj-eglue-omr() {
 	git checkout amsaied/eglue
 }
 
+live() {
+tmux \
+    new-session  'teams' \; \
+    split-window 'async' \; \
+    detach-client
+}
+
 source /home/amin/.config/broot/launcher/bash/br
 
 # >>> conda initialize >>>
