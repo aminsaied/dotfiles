@@ -166,7 +166,7 @@ proj-ls() {
 proj-system-asynceglue() {
 	cd ~/repos/system
         if [ $# -ne 0 ]; then
-                nano docs/projects/2020.06.AsyncEglue/$1.md
+                vim docs/projects/2020.06.AsyncEglue/$1.md
         else
                 cd docs/projects/2020.06.AsyncEglue
         fi 
@@ -177,7 +177,7 @@ alias async="proj-system-asynceglue 6"
 proj-system-teams() {
         cd ~/repos/system
         if [ $# -ne 0 ]; then
-                nano docs/projects/2020.06.Teams/$1.md
+                vim docs/projects/2020.06.Teams/$1.md
         else
                 cd docs/projects/2020.06.Teams
         fi
@@ -188,7 +188,7 @@ alias teams="proj-system-teams 6"
 proj-system-amlds() {
         cd ~/repos/system
         if [ $# -ne 0 ]; then
-                nano docs/projects/AMLDS/$1.md
+                vim docs/projects/AMLDS/$1.md
         else
                 cd docs/projects/AMLDS
         fi

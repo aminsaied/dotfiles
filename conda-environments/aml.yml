@@ -4,6 +4,8 @@ channels:
   - anaconda
 dependencies:
   - python=3.8
+  - numpy
+  - scikit-learn
   - pip
   - pip:
     - azureml-sdk
