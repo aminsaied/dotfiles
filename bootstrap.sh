@@ -16,3 +16,6 @@ ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
 
 # tmux
 ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
+
+# vim
+ln -s ${BASEDIR}/.vimrc ~/.vimrc
