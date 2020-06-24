@@ -1,6 +1,7 @@
 syntax on
 
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+au BufRead,BufNewFile *.md setlocal wrap
 
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -15,9 +16,6 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-
-set colorcolumn=93
-highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
 
