@@ -76,3 +76,22 @@ where the ``--prune`` flag will remove any dependencies that are no longer requi
 ## Windows Terminal Settings
 
 I've included my settings for Windows Terminal. Unfortunately there is no magic syncing here, just meant for inspiration. You can edit your settings directly from the windows terminal by selecting "Settings" from the drop down menu.
+
+
+## Vim
+
+### YouCompleteMe
+
+To get YCM plugin installed need to run:
+
+```bash
+sudo apt install build-essential cmake
+```
+
+Then change directory to the YCM plugin and run the install script
+
+```bash
+cd ~/.vim/plugged/YouCompleteMe
+python3 install.py
+
+TODO: add this to the `bootstrap.sh` script.
