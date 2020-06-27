@@ -152,49 +152,49 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 # these should be updated regularly
 proj-ls() {
 	echo "System"
-	echo "    proj-system-asynceglue 6"
+	echo "    edit-system-async active"
 	echo "        alias async"
-	echo "    proj-system-amlds 6"
+	echo "    edit-system-amlds active"
 	echo "        alias amlds"
-        echo "    proj-system-teams 6"
-        echo "        alias teams"
+    echo "    edit-system-exp active"
+    echo "        alias exp"
 
 	echo "Projects: proj-eglue"
 	echo "    proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
 }
 
-proj-system-asynceglue() {
+edit-system-async() {
 	cd ~/repos/system
         if [ $# -ne 0 ]; then
-                vim docs/projects/2020.06.AsyncEglue/$1.md
+                vim docs/projects/async/$1.md
         else
-                cd docs/projects/2020.06.AsyncEglue
+                cd docs/projects/async
         fi 
 }
 
-alias async="proj-system-asynceglue 6"
+alias async="edit-system-async async-active"
 
-proj-system-teams() {
+edit-system-exp() {
         cd ~/repos/system
         if [ $# -ne 0 ]; then
-                vim docs/projects/2020.06.Teams/$1.md
+                vim docs/projects/exp/$1.md
         else
-                cd docs/projects/2020.06.Teams
+                cd docs/projects/exp
         fi
 }
 
-alias teams="proj-system-teams 6"
+alias exp="edit-system-exp exp-active"
 
-proj-system-amlds() {
+edit-system-amlds() {
         cd ~/repos/system
         if [ $# -ne 0 ]; then
-                vim docs/projects/AMLDS/$1.md
+                vim docs/projects/amlds/$1.md
         else
-                cd docs/projects/AMLDS
+                cd docs/projects/amlds
         fi
 }
 
-alias amlds="proj-system-amlds 6"
+alias amlds="edit-system-amlds amlds-active"
 
 
 # start mkdocs servers
