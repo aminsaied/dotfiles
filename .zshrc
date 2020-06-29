@@ -152,50 +152,41 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 # these should be updated regularly
 proj-ls() {
 	echo "System"
-	echo "    edit-system-async active"
-	echo "        alias async"
-	echo "    edit-system-amlds active"
-	echo "        alias amlds"
-    echo "    edit-system-exp active"
-    echo "        alias exp"
+	echo "- async: open async project"
+	echo "- amlds: open async project"
+    echo "- exp: open exp project"
+    echo "- meeting: create new meeting and open in vim"
+    echo "  - meeting foo bar: create new meeting called bar in foo directory"
+
 
 	echo "Projects: proj-eglue"
-	echo "    proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
+	echo "- proj-eglue-omr:" "Open EGLUE in Matrix repo and checkout amsaied/eglue"
 }
 
-edit-system-async() {
+async() {
 	cd ~/repos/system
-        if [ $# -ne 0 ]; then
-                vim docs/projects/async/$1.md
-        else
-                cd docs/projects/async
-        fi 
+    vim docs/projects/async/async-active.md
 }
 
-alias async="edit-system-async async-active"
-
-edit-system-exp() {
+exp() {
         cd ~/repos/system
-        if [ $# -ne 0 ]; then
-                vim docs/projects/exp/$1.md
-        else
-                cd docs/projects/exp
-        fi
+        vim docs/projects/exp/exp-active.md
 }
 
-alias exp="edit-system-exp exp-active"
-
-edit-system-amlds() {
+amlds() {
         cd ~/repos/system
-        if [ $# -ne 0 ]; then
-                vim docs/projects/amlds/$1.md
-        else
-                cd docs/projects/amlds
-        fi
+        vim docs/projects/amlds/amlds-active.md
 }
 
-alias amlds="edit-system-amlds amlds-active"
-
+meeting() {
+    cd ~/repos/system
+    if [ $# -ne 0 ]; then
+        file=$(python scripts/meetings.py --dir $1 --name $2)
+    else 
+        file=$(python scripts/meetings.py)
+    fi
+    vim $file
+}
 
 # start mkdocs servers
 serve-dsref() {
@@ -208,14 +199,6 @@ serve-system() {
 	cd ~/repos/system
 	conda activate mkdocs-env
 	mkdocs serve -a localhost:8088
-}
-
-# this is wip
-live() {
-tmux \
-    new-session  'teams' \; \
-    split-window 'async' \; \
-    detach-client
 }
 
 source /home/amin/.config/broot/launcher/bash/br
