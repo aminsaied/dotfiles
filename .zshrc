@@ -203,6 +203,8 @@ serve-system() {
 
 source /home/amin/.config/broot/launcher/bash/br
 
+alias jn="~/.local/bin/jupyter-notebook --no-browser"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -218,3 +220,21 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+function powerline_precmd() {
+    export GOPATH=$HOME/go
+    PS1="$($GOPATH/bin/powerline-go -error $? -shell zsh)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
