@@ -13,6 +13,7 @@ export ZSH="/home/amin/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
+# ZSH_THEME=powerlevel10k/powerlevel10k  #git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -220,21 +221,26 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+## >>> powerline-go >>>
+## sudo apt install golang-go
+## go get -u github.com/justjanne/powerline-go
+## https://github.com/justjanne/powerline-go?WT.mc_id=-blog-scottha
+# function powerline_precmd() {
+#     export GOPATH=$HOME/go
+#     PS1="$($GOPATH/bin/powerline-go -error $? -shell zsh)
+# > "
+# }
 
-function powerline_precmd() {
-    export GOPATH=$HOME/go
-    PS1="$($GOPATH/bin/powerline-go -error $? -shell zsh)"
-}
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
 
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
+## <<< powerline-go <<<
