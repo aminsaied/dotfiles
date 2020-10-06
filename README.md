@@ -93,5 +93,19 @@ Then change directory to the YCM plugin and run the install script
 ```bash
 cd ~/.vim/plugged/YouCompleteMe
 python3 install.py
+```
 
 TODO: add this to the `bootstrap.sh` script.
+
+## Setup on WSL
+
+First time running on WSL:
+
+1. Clone `dotfiles` repo to ~/repos directory
+2. Install zsh: `sudo apt update` and `sudo apt install zsh`. Now run `zsh` to launch the zsh shell
+3. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
+4. Install Oh-My-Zsh:
+```
+sudo apt install git-core curl fonts-powerline
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+```
