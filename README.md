@@ -107,5 +107,9 @@ First time running on WSL:
 4. Install Oh-My-Zsh:
 ```
 sudo apt install git-core curl fonts-powerline
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+5. Install zsh syntax highlighting plugin:
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
