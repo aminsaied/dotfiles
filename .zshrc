@@ -116,7 +116,7 @@ edit-zsh () {
 	if [ $# -ne 0 ]; then
 		$1 ~/.zshrc
 	else
-		nano ~/.zshrc
+		vim ~/.zshrc
 	fi
 }
 ## usage: $ edit-zsh code
@@ -125,8 +125,14 @@ edit-ssh () {
 	if [ $# -ne 0 ]; then
 		$1 ~/.ssh/config
 	else
-		nano ~/.ssh/config
+		vim ~/.ssh/config
 	fi
+}
+
+# jupyter notebook
+jn () {
+    cd ~/jupyter
+    jupyter-notebook --no-browser
 }
 
 # helpers for repos
@@ -203,6 +209,9 @@ serve-system() {
 
 source /home/amin/.config/broot/launcher/bash/br
 
+# add environment variables for AML
+export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -218,3 +227,22 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# >>> go init >>>
+#function powerline_precmd() {
+#    PS1="$($GOPATH/bin/powerline-go -error $? -shell zsh)"
+#}
+#
+#function install_powerline_precmd() {
+#  for s in "${precmd_functions[@]}"; do
+#    if [ "$s" = "powerline_precmd" ]; then
+#      return
+#    fi
+#  done
+#  precmd_functions+=(powerline_precmd)
+#}
+#
+#if [ "$TERM" != "linux" ]; then
+#    install_powerline_precmd
+#fi
+#
+# <<< go init <<<
