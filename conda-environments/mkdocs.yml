@@ -1,4 +1,4 @@
-name: mkdocs-env
+name: mkdocs
 channels:
   - defaults
   - anaconda
