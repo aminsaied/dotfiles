@@ -206,6 +206,39 @@ source /home/amin/.config/broot/launcher/bash/br
 
 alias jn="~/.local/bin/jupyter-notebook --no-browser"
 
+serve-jn () {
+    is_running=$(tmux ls | grep jn-session | wc -l)
+    if [ $is_running -gt 0 ]; then
+        echo "Existing jn-session is running. Please end that first."
+        echo "Run tmux kill-session -t jn-session"
+    else
+        tmux new -s jn-session -d
+        tmux send-keys -t jn-session "mkdir -p /tmp/jn-server && jn 2> /tmp/jn-server/stderr.txt " ENTER
+        addr=$(cat /tmp/jn-server/stderr.txt | grep http | tail -n1 | sed -E 's/^.*http/http/')
+        wslview $addr
+    fi
+}
+alias jn-serve=serve-jn
+kill-jn () {
+    is_running=$(tmux ls | grep jn-session | wc -l)
+    if [ $is_running -gt 0 ]; then
+        tmux kill-session -t jn-session
+        echo "Killed jn-session"
+    else
+        echo "No jn-session is running"
+    fi
+}
+alias jn-kill=kill-jn
+view-jn () {
+    is_running=$(tmux ls | grep jn-session | wc -l)
+    if [ $is_running -gt 0 ]; then
+        tmux attach -t jn-session
+    else
+        echo "No jn-session is running"
+    fi
+}
+alias jn-view=view-jn
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
