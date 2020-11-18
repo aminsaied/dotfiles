@@ -195,12 +195,14 @@ serve-dsref() {
         conda activate mkdocs-env
         mkdocs serve -a localhost:8888
 }
+alias dsref-serve=serve-dsref
 
 serve-system() {
 	cd ~/repos/system
 	conda activate mkdocs-env
 	mkdocs serve -a localhost:8088
 }
+alias system-serve=serve-system
 
 source /home/amin/.config/broot/launcher/bash/br
 
@@ -209,11 +211,6 @@ export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
 
 
 # jupyter notebook
-jn1 () {
-    cd ~/jupyter
-    jupyter-notebook --no-browser
-}
-
 alias jn="~/.local/bin/jupyter notebook --no-browser"
 
 serve-jn () {
