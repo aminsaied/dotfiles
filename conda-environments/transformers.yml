@@ -1,0 +1,14 @@
+name: transformers
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+    - git+git://github.com/huggingface/transformers.git
+    - datasets
+    - azureml-sdk
+    - datasets
+    - torch
+    - scipy
+    - sklearn

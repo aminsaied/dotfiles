@@ -13,6 +13,7 @@ export ZSH="/home/amin/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
+# ZSH_THEME=powerlevel10k/powerlevel10k  #git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -129,12 +130,6 @@ edit-ssh () {
 	fi
 }
 
-# jupyter notebook
-jn () {
-    cd ~/jupyter
-    jupyter-notebook --no-browser
-}
-
 # helpers for repos
 alias lsr="ls ~/repos"
 cdr () {
@@ -211,6 +206,15 @@ source /home/amin/.config/broot/launcher/bash/br
 
 # add environment variables for AML
 export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
+
+
+# jupyter notebook
+jn1 () {
+    cd ~/jupyter
+    jupyter-notebook --no-browser
+}
+
+alias jn="~/.local/bin/jupyter notebook --no-browser"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
