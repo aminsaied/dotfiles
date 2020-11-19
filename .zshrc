@@ -246,6 +246,14 @@ view-jn () {
 }
 alias jn-view=view-jn
 
+jn-explore () {
+    cdr
+    mkdir -p jupyter-notebooks
+    cd jupyter-notebooks
+    jn-serve
+}
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
