@@ -189,6 +189,13 @@ meeting() {
     vim $file
 }
 
+notepad() {
+    cd ~
+    mkdir -p notepad
+    cd notepad
+    vim "note_$(date +%F)"
+}
+
 # start mkdocs servers
 serve-dsref() {
         cd ~/repos/dsref
@@ -203,6 +210,12 @@ serve-system() {
 	mkdocs serve -a localhost:8088
 }
 alias system-serve=serve-system
+
+edit-system() {
+    cd ~/repos/system
+    code .
+}
+alias system-edit
 
 source /home/amin/.config/broot/launcher/bash/br
 
