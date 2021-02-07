@@ -27,7 +27,7 @@ ln -s ${BASEDIR}/.bashrc ~/.bashrc
 ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # oh my zsh
-[ -f ~/.oh-my-zsh ] && cp -f ~/.oh-my-zsh ~/dotfiles/backups/.oh-my-zsh && rm -r ~/.oh-my-zsh
+[ -d ~/.oh-my-zsh ] && cp -rf ~/.oh-my-zsh ~/dotfiles/backups/.oh-my-zsh && rm -rf ~/.oh-my-zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
 # install oh-my-zsh plugins
 sudo apt install git-core curl fonts-powerline
