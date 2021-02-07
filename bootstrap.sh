@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt update
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ######################
@@ -31,6 +32,8 @@ ln -s ${BASEDIR}/.zshrc ~/.zshrc
 [ -f ~/.oh-my-zsh ] && cp -f ~/.oh-my-zsh ~/dotfiles/backups/.oh-my-zsh && rm -r ~/.oh-my-zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
 # install oh-my-zsh plugins
+sudo apt install git-core curl fonts-powerline
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # git
@@ -45,6 +48,10 @@ ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
 # is .vimrc already there then copy it to dotfiles/backup
 [ -f ~/.vimrc ] && cp -f ~/.vimrc ~/dotfiles/backups/.vimrc && rm -r ~/.vimrc
 ln -s ${BASEDIR}/.vimrc ~/.vimrc
+# you-complete-me plugin
+sudo apt install build-essential cmake
+cd ~/.vim/plugged/YouCompleteMe
+python3 install.py
 
 # this will answer yes to any installation questions
 # https://linux.die.net/man/1/yes
