@@ -2,17 +2,14 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-##########################
-## PACKAGE INSTALLATION ##
-##########################
+######################
+## ZSH INSTALLATION ##
+######################
 
 # install ZSH
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 sh install.sh
 rm -r install.sh
-
-# install oh-my-zsh plugins
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 #######################
 ## SYM-LINK DOTFILES ##
@@ -31,6 +28,8 @@ ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # oh my zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
+# install oh-my-zsh plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # git
 # if .gitconfig already there then leave it alone
@@ -46,5 +45,6 @@ ln -s ${BASEDIR}/.vimrc ~/.vimrc
 
 # this will answer yes to any installation questions
 # https://linux.die.net/man/1/yes
+echo "bootstrap complete!"<<-EOF
 yes
 EOF
