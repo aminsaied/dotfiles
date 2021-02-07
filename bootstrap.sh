@@ -48,6 +48,8 @@ ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
 # is .vimrc already there then copy it to dotfiles/backup
 [ -f ~/.vimrc ] && cp -f ~/.vimrc ~/dotfiles/backups/.vimrc && rm -r ~/.vimrc
 ln -s ${BASEDIR}/.vimrc ~/.vimrc
+[ -f ~/.vim ] && cp -f ~/.vim ~/dotfiles/backups/.vim && rm -r ~/.vim
+ln -s ${BASEDIR}/.vim ~/.vim
 # you-complete-me plugin
 sudo apt install build-essential cmake
 cd ~/.vim/plugged/YouCompleteMe
