@@ -24,9 +24,11 @@ mkdir ~/dotfiles/backups
 ln -s ${BASEDIR}/.bashrc ~/.bashrc
 
 # zsh
+[ -f ~/.zshrc ] && cp -f ~/.zshrc ~/dotfiles/backups/.zshrc && rm -r ~/.zshrc
 ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # oh my zsh
+[ -f ~/.oh-my-zsh ] && cp -f ~/.oh-my-zsh ~/dotfiles/backups/.oh-my-zsh && rm -r ~/.oh-my-zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
 # install oh-my-zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -36,6 +38,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ! [ -f ~/.gitconfig ] && ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
 
 # tmux
+[ -f ~/.tmux.conf ] && cp -f ~/.tmux.conf ~/dotfiles/backups/.tmux.conf && rm -r ~/.tmux.conf
 ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
 
 # vim
