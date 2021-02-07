@@ -6,6 +6,15 @@ You can use this repo in one of two ways:
 1. Check out my dotfiles for inspiration.
 2. Clone this repo into your home directory and run the `bootstrap.sh` script to set up symlinks to these dotfiles. This way you can version control just the dotfiles
 
+## Usage
+
+```
+cd ~
+git clone git@github.com:aminsaied/dotfiles.git
+cd dotfiles
+sudo bash bootstrap.sh
+```
+
 ## Why (and how)
 Dotfiles allow you to customize your shell. When setting up a new machine it's nice to have all that config come with you. Hence we want to version control our dotfiles. The challenge is that these dotfiles are expected to live in a certain place on your machine. Typically your dotfiles have the following structure:
 
