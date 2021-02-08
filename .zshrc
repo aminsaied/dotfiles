@@ -5,7 +5,7 @@ export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH=~/miniconda/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/amin/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -106,12 +106,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#############
+#### SSH ####
+#############
+# https://dev.to/levivm/how-to-use-ssh-and-ssh-agent-forwarding-more-secure-ssh-2c32
+# 1. initialize ssh-agent
+eval `ssh-agent` >/dev/null
+# 2. add ssh key
+ssh-add >/dev/null 2>&1
+
 # Aliases
 ## navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias see-ssh.pub="less ~/.ssh/id_rsa.pub"
+
 ## commonly edited files
 edit-zsh () {
 	if [ $# -ne 0 ]; then
@@ -189,13 +198,6 @@ meeting() {
     vim $file
 }
 
-notepad() {
-    cd ~
-    mkdir -p notepad
-    cd notepad
-    vim "note_$(date +%F)"
-}
-
 # start mkdocs servers
 serve-dsref() {
         cd ~/repos/dsref
@@ -217,11 +219,20 @@ edit-system() {
 }
 alias system-edit
 
-source /home/amin/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 
 # add environment variables for AML
 export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
 
+project-elr2() {
+    cd ~/repos/elr2
+    conda activate elr2
+    cd sources/dev/SubstrateInferences/ELR2
+    export PYTHONPATH=$PWD
+    cd ..
+    code .
+}
+alias edit-elr2=project-elr2
 
 # jupyter notebook
 alias jn="~/.local/bin/jupyter notebook --no-browser"
@@ -269,14 +280,14 @@ jn-explore () {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/amin/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("${HOME}"'/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/amin/miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/amin/miniconda/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda/etc/profile.d/conda.sh"
     else
-        export PATH="/home/amin/miniconda/bin:$PATH"
+        export PATH="$HOME/miniconda/bin:$PATH"
     fi
 fi
 unset __conda_setup
