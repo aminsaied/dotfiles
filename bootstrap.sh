@@ -23,11 +23,11 @@ mkdir ~/dotfiles/backups
 ln -s ${BASEDIR}/.bashrc ~/.bashrc
 
 # zsh
-[ -f ~/.zshrc ] && cp -f ~/.zshrc ~/dotfiles/backups/.zshrc && rm -r ~/.zshrc
+[ -f ~/.zshrc ] && rm -r ~/.zshrc
 ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # oh my zsh
-[ -d ~/.oh-my-zsh ] && cp -rf ~/.oh-my-zsh ~/dotfiles/backups/.oh-my-zsh && rm -rf ~/.oh-my-zsh
+[ -d ~/.oh-my-zsh ] && rm -rf ~/.oh-my-zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
 # install oh-my-zsh plugins
 sudo apt install git-core curl fonts-powerline
@@ -40,12 +40,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ! [ -f ~/.gitconfig ] && ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
 
 # tmux
-[ -f ~/.tmux.conf ] && cp -f ~/.tmux.conf ~/dotfiles/backups/.tmux.conf && rm -r ~/.tmux.conf
+[ -f ~/.tmux.conf ] && rm -r ~/.tmux.conf
 ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
 
 # vim
 # is .vimrc already there then copy it to dotfiles/backup
-[ -f ~/.vimrc ] && cp -f ~/.vimrc ~/dotfiles/backups/.vimrc && rm -r ~/.vimrc
+[ -f ~/.vimrc ] && rm -r ~/.vimrc
 ln -s ${BASEDIR}/.vimrc ~/.vimrc
 
 # this will answer yes to any installation questions
