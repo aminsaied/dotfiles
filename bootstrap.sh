@@ -3,6 +3,17 @@
 sudo apt update
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+#############################
+## CLEAR EXISTING DOTFILES ##
+#############################
+# if .bashrc already there then copy it to dotfiles/backup
+[ -f ~/.bashrc ] && cp -f ~/.bashrc ~/dotfiles/backups/.bashrc && rm -r ~/.bashrc
+[ -f ~/.zshrc ] && rm -r ~/.zshrc
+[ -d ~/.oh-my-zsh ] && rm -rf ~/.oh-my-zsh
+[ -f ~/.tmux.conf ] && rm -r ~/.tmux.conf
+[ -f ~/.vimrc ] && rm -r ~/.vimrc
+
+
 ######################
 ## ZSH INSTALLATION ##
 ######################
@@ -18,35 +29,33 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 mkdir ~/dotfiles/backups
 
 # bash
-# is .bashrc already there then copy it to dotfiles/backup
-[ -f ~/.bashrc ] && cp -f ~/.bashrc ~/dotfiles/backups/.bashrc && rm -r ~/.bashrc
 ln -s ${BASEDIR}/.bashrc ~/.bashrc
 
 # zsh
-[ -f ~/.zshrc ] && rm -r ~/.zshrc
 ln -s ${BASEDIR}/.zshrc ~/.zshrc
 
 # oh my zsh
-[ -d ~/.oh-my-zsh ] && rm -rf ~/.oh-my-zsh
 ln -s  ${BASEDIR}/.oh-my-zsh ~/.oh-my-zsh
-# install oh-my-zsh plugins
-sudo apt install git-core curl fonts-powerline
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-! [ -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ] && \
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # git
 # if .gitconfig already there then leave it alone
 ! [ -f ~/.gitconfig ] && ln -s ${BASEDIR}/.gitconfig ~/.gitconfig
 
 # tmux
-[ -f ~/.tmux.conf ] && rm -r ~/.tmux.conf
 ln -s ${BASEDIR}/.tmux.conf ~/.tmux.conf
 
 # vim
-# is .vimrc already there then copy it to dotfiles/backup
-[ -f ~/.vimrc ] && rm -r ~/.vimrc
 ln -s ${BASEDIR}/.vimrc ~/.vimrc
+
+#######################
+## OH-MY-ZSH PLUGINS ##
+#######################
+
+sudo apt install git-core curl fonts-powerline
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && \
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
 
 # this will answer yes to any installation questions
 # https://linux.die.net/man/1/yes
