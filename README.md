@@ -6,15 +6,6 @@ You can use this repo in one of two ways:
 1. Check out my dotfiles for inspiration.
 2. Clone this repo into your home directory and run the `bootstrap.sh` script to set up symlinks to these dotfiles. This way you can version control just the dotfiles
 
-## Usage
-
-```
-cd ~
-git clone git@github.com:aminsaied/dotfiles.git
-cd dotfiles
-sudo bash bootstrap.sh
-```
-
 ## Why (and how)
 Dotfiles allow you to customize your shell. When setting up a new machine it's nice to have all that config come with you. Hence we want to version control our dotfiles. The challenge is that these dotfiles are expected to live in a certain place on your machine. Typically your dotfiles have the following structure:
 
@@ -39,6 +30,51 @@ Now we can't reasonably version control all of `~`! There's a neat trick that ge
 ```
 
 This will redirect all requests for `~/.bashrc` to `~/dotfiles/.bashrc` (and so on), meaning that things will still work as expected. And now we can version control `~/dotfiles` and the problem is solved.
+
+## Usage
+
+Setting up a new machine for the first time:
+
+```bash
+# set up ssh
+ssh-keygen -t rsa
+less ~/.ssh/id_rsa.pub
+
+#! manual step:
+# copy ssh id to your github account
+```
+
+```
+cd ~
+git clone git@github.com:aminsaied/dotfiles.git
+cd dotfiles
+sudo bash bootstrap.sh
+```
+
+## SSH Agent
+
+Goal: Use ssh-agent to forward ssh keys from my client (e.g. my laptop) to
+the server (e.g. some azure vm). This allows you to interact with github
+using your client ssh keys from the remote.
+
+On client:
+- My `.zshrc` starts up an agent and adds the ssh keys. Note: since I am using
+  WSL I need to do this manually for each new shell, hence putting this in `.zshrc`.
+  TODO: add this to `.profile`.
+
+For new VM:
+- Configure the VM in `~/.ssh/config` including `ForwardAgent yes` to enable
+  agent forwarding.
+
+  ```
+  Host amsaied-ci
+    HostName 52.250.36.122
+    User azureuser
+    Port 50000
+    ForwardAgent yes
+  ```
+
+  **Note.** Alternatively, use `-A` flag with ssh: `ssh -A user@example`
 
 ## oh-my-zsh plugins
 
