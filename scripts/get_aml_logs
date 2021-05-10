@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+from azureml.core import Workspace
+from _aml_utils import aml_workspace_parser
+
+
+def get_args():
+    parser = aml_workspace_parser()
+    parser.add_argument("--run", "-r", type=str, help="Provide the run id")
+    parser.add_argument("--experiment", "-e", type=str, help="Provide the experiment name")
+    parser.add_argument("--log_file", "-l", default=None, help="Specify specific log path to download.")
+    parser.add_argument("--output", "-o", default="run_logs")
+    args = parser.parse_args()
+    return args
+
+if __name__ == "__main__":
+
+    args = get_args()
+
+    ws = Workspace(
+        subscription_id=args.subscription,
+        resource_group=args.group,
+        workspace_name=args.name,
+    )
+
+    experiment = ws.experiments.get(args.experiment)
+
+    assert experiment is not None, f"Couldn't find experiment {args.experiment} in workspace."
+
+    got_it = False
+    for run in experiment.runs():
+        if run.id == args.run:
+            got_it = True
+            break
+
+    assert got_it, f"Couldn't find run with id {args.run} in {args.experiment}."
+
+    if args.log_file is None:
+        run.get_all_logs(destination=args.output)
+    else:
+        run.download_file(
+            name=args.log_file,
+            output_file_path=args.output,
+        )

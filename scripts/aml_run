@@ -1,0 +1,173 @@
+#!/usr/bin/env python
+import os
+import json
+from os.path import isfile
+import warnings
+from dataclasses import dataclass, asdict
+import dateutil
+from typing import Dict, List
+
+with warnings.catch_warnings():
+    from azureml.core import Workspace
+
+from _aml_utils import (
+    aml_workspace_parser,
+    workspace_from_args,
+)
+
+
+@dataclass
+class RunData:
+    run_id: str
+    start_time_utc: str
+    end_time_utc: str
+    status: str
+    experiment: str
+    url: str
+
+    def is_valid(self):
+        valid_start_time_utc = self.start_time_utc is not None
+        valid_end_time_utc = self.end_time_utc is not None
+        valid_status = self.status is not None
+        return (
+            valid_start_time_utc and
+            valid_end_time_utc and
+            valid_status
+        )
+
+    def _print(self, with_url: bool = False):
+        # o = f"{self.run_id} {self.start_time_utc} {self.status} {self.experiment} {self.url}"
+        desited_date_output = "yyyy-mm-ddTHH:MM"
+        o = f"{self.start_time_utc[:len(desited_date_output)]} {self.run_id} ({self.status})"
+        print(o)
+        if with_url:
+            print(self.url)
+            print()
+
+class RunHistoryCache:
+
+    CACHE_DIR = os.path.expanduser("~/.aml_cache")
+    RUN_HISTORY_EXT = ".run_history"
+    RUNS_EXT = ".runs"
+
+    def __init__(self, workspace: Workspace):
+
+        # make cache directory for runs
+        os.makedirs(RunHistoryCache.CACHE_DIR, exist_ok=True)
+
+        self.cache_id = ".".join([
+            workspace.subscription_id,
+            workspace.resource_group,
+            workspace.name,
+            ])
+
+        self.run_history_path = os.path.join(self.CACHE_DIR, self.cache_id + self.RUN_HISTORY_EXT)
+        self.runs_path = os.path.join(self.CACHE_DIR, self.cache_id + self.RUNS_EXT)
+
+        self.run_history: List[RunData] = self._load_run_history()
+        self.runs: Dict = self._load_runs()
+
+    def take(self, n: int, verbose: bool = False, with_url: bool = False):
+        for run_data in self.run_history[:n]:
+            if verbose:
+                run_data._print(with_url=with_url)
+            else:
+                print(run_data.run_id)
+
+    def update_run_store_cache(self, verbose: bool = False):
+        experiments = workspace.experiments
+        i = 0
+        for experiment_name, experiment in experiments.items():
+            i += 1
+            
+            if verbose:
+                # TODO: create progress bar
+                print(f"({i}/{len(experiments)}) Processing {experiment_name}...")
+
+            for run in experiment.get_runs():
+
+                if run.id in self.runs:
+                    # already processed
+                    continue
+
+                details = run.get_details()
+
+                run_data = RunData(
+                    run_id=run.id,
+                    start_time_utc=details.get("startTimeUtc"),
+                    end_time_utc=details.get("endTimeUtc"),
+                    status=details.get("status"),
+                    experiment=experiment_name,
+                    url=run.get_portal_url(),
+                )
+
+                self.runs[run.id] = run_data.url
+
+                if run_data.is_valid():
+                    self.run_history.append(run_data)
+
+        # sort entire run history by design to allow for partial cache
+        # updates (e.g. by single experiment)
+        self._sort_run_history()
+
+        self._write_cache()
+
+    def refresh_cache(self):
+        if os.path.isfile(self.run_history_path):
+            os.remove(self.run_history_path)
+        if os.path.isfile(self.runs_path):
+            os.remove(self.runs_path)
+        self.update_run_store_cache(verbose=True)
+
+
+    def _sort_run_history(self):
+        self.run_history.sort(key=lambda r: dateutil.parser.parse(r.start_time_utc), reverse=True)
+
+    def _write_cache(self):
+        run_history_dicts = [asdict(r) for r in self.run_history]
+        with open(self.run_history_path, "w") as f:
+            json.dump(run_history_dicts, f)
+
+        with open(self.runs_path, "w") as f:
+            json.dump(self.runs, f)
+
+    def _load_run_history(self):
+        if os.path.exists(self.run_history_path):
+            with open(self.run_history_path, "r") as f:
+                run_history_dicts = json.load(f)
+                run_history = [RunData(**r) for r in run_history_dicts]
+        else:
+            run_history = []
+        return run_history
+
+    def _load_runs(self):
+        if os.path.exists(self.runs_path):
+            with open(self.runs_path, "r") as f:
+                runs = json.load(f)
+        else:
+            runs = {}
+        return runs
+
+
+
+if __name__ == "__main__":
+
+    parser = aml_workspace_parser()
+    parser.add_argument("--take", "-t", type=int, default=1, help="Take last n runs from the workspace.")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Full run history.")
+    parser.add_argument("--url", action="store_true", help="Display run url.")
+    parser.add_argument("--no-update", action="store_true", help="Don't update the cache.")
+    args = parser.parse_args()
+
+    # get workspace
+    try:
+        with warnings.catch_warnings():
+            workspace = workspace_from_args(args)
+    except:
+        print("Unable to load workspace")
+
+    rh_cache = RunHistoryCache(workspace)
+    if not args.no_update:
+        rh_cache.update_run_store_cache()
+
+    rh_cache.take(n=args.take, verbose=args.verbose, with_url=args.url)
