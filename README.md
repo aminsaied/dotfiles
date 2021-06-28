@@ -48,8 +48,10 @@ less ~/.ssh/id_rsa.pub
 cd ~
 git clone git@github.com:aminsaied/dotfiles.git
 cd dotfiles
-sudo bash bootstrap.sh
+bash bootstrap.sh
 ```
+
+**Note.** Running `sudo bash bootstrap.sh` will treat ~ directory as `/root`, not `/home/<user>`.
 
 ## SSH Agent
 
