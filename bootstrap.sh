@@ -70,9 +70,6 @@ KEEP_ZSHRC=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell
 ! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && \
     cp -r ${BASEDIR}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins
 
-# .zshrc can get overridden to .zshrc.pre-oh-my-zsh
-# [ -f $HOME/.zshrc.pre-oh-my-zsh ] && rm -f $HOME/.zshrc && mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
-
 # this will answer yes to any installation questions
 # https://linux.die.net/man/1/yes
 echo "bootstrap complete!"<<-EOF
