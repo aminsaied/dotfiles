@@ -6,6 +6,17 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo $BASEDIR
 echo $HOME
 
+######################
+## ZSH INSTALLATION ##
+######################
+
+# install ZSH
+echo "Installing ZSH"
+sudo apt install zsh
+
+# make zsh your default shell
+chsh -s $(which zsh)
+
 #############################
 ## CLEAR EXISTING DOTFILES ##
 #############################
@@ -17,18 +28,6 @@ echo $HOME
 [ -d $HOME/.oh-my-zsh ] && rm -rf $HOME/.oh-my-zsh
 [ -f $HOME/.tmux.conf ] && rm -r $HOME/.tmux.conf
 [ -f $HOME/.vimrc ] && rm -r $HOME/.vimrc
-
-
-######################
-## ZSH INSTALLATION ##
-######################
-
-# install ZSH
-echo "Installing ZSH"
-sudo apt install zsh
-
-# make zsh your default shell
-chsh -s $(which zsh)
 
 #######################
 ## SYM-LINK DOTFILES ##
@@ -65,11 +64,14 @@ ln -s ${BASEDIR}/.vimrc $HOME/.vimrc
 
 [ -d $HOME/.oh-my-zsh ] && rm -rf $HOME/.oh-my-zsh && echo "Removed existing ~/.oh-my-zsh dir"
 sudo apt install git-core curl fonts-powerline
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+KEEP_ZSHRC=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && \
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && cp -r ${BASEDIR}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
+! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && \
+    cp -r ${BASEDIR}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins
 
+# .zshrc can get overridden to .zshrc.pre-oh-my-zsh
+# [ -f $HOME/.zshrc.pre-oh-my-zsh ] && rm -f $HOME/.zshrc && mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 
 # this will answer yes to any installation questions
 # https://linux.die.net/man/1/yes
