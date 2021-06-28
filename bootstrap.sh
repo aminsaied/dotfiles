@@ -68,6 +68,7 @@ sudo apt install git-core curl fonts-powerline
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && \
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+! [ -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && cp -r ${BASEDIR}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins
 
 
 # this will answer yes to any installation questions
