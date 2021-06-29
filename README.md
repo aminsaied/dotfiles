@@ -108,19 +108,16 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
 
 ## Conda environments
 
-Bringing my conda environment yaml files with me. Build an environment `env.yml` with:
+Install / set up miniconda:
 
-```bash
-conda env create -f env.yml
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+rm -f Miniconda3-latest-Linux-x86_64.sh
 ```
 
-And update with:
-
-```bash
-conda env update -f env.yml --prune
-```
-
-where the ``--prune`` flag will remove any dependencies that are no longer required.
+You'll be prompted to answer some questions as part of the Miniconda install process. Nothing too taxing, I promise ;-)
 
 ## Windows Terminal Settings
 
