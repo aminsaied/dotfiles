@@ -148,14 +148,7 @@ TODO: add this to the `bootstrap.sh` script.
 First time running on WSL:
 
 1. Clone `dotfiles` repo to ~/repos directory
-2. Install zsh: `sudo apt update` and `sudo apt install zsh`. Now run `zsh` to launch the zsh shell
-3. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
-4. Install Oh-My-Zsh:
-```
-sudo apt install git-core curl fonts-powerline
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-5. Install zsh syntax highlighting plugin:
-```
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
+2. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
+3. Install broot (see above)
+4. Install miniconda3 (see above)
+5. Install dotnet core (see [here](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-))
