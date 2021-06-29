@@ -151,4 +151,4 @@ First time running on WSL:
 2. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
 3. Install broot (see above)
 4. Install miniconda3 (see above)
-5. Install dotnet core (see [here](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-))
+5. Install dotnet core with `sudo apt-get install -y dotnet-runtime-2.1` (more details: [here](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-))
