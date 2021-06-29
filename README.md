@@ -152,3 +152,4 @@ First time running on WSL:
 3. Install broot (see above)
 4. Install miniconda3 (see above)
 5. Install dotnet core with `sudo apt-get install -y dotnet-runtime-2.1` (more details: [here](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-))
+6. Install azure cli (see [docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt))
