@@ -104,6 +104,8 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
 4. Set `broot` to be executable with `chmod +x broot`
 5. Finally, attempt to run `broot` and you will be met with the prompt to download https://github.com/Canop/broot. In particular, this will write the `br` shell function in `/home/<user>/.local/share/broot/launcher/bash/1` which is referenced in the `.zshrc` config.
 
+**Note.** WSL has a keybinding assigned to `Alt`+`Enter` (toggles fullscreen) which conflicts with a vital command in broot: change directory. You can delete the WSL keybinding from settings > actions.
+
 ## Conda environments
 
 Bringing my conda environment yaml files with me. Build an environment `env.yml` with:
