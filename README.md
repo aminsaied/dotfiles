@@ -104,21 +104,20 @@ Download broot tool from [here](https://dystroy.org/broot/documentation/installa
 4. Set `broot` to be executable with `chmod +x broot`
 5. Finally, attempt to run `broot` and you will be met with the prompt to download https://github.com/Canop/broot. In particular, this will write the `br` shell function in `/home/<user>/.local/share/broot/launcher/bash/1` which is referenced in the `.zshrc` config.
 
+**Note.** WSL has a keybinding assigned to `Alt`+`Enter` (toggles fullscreen) which conflicts with a vital command in broot: change directory. You can delete the WSL keybinding from settings > actions.
+
 ## Conda environments
 
-Bringing my conda environment yaml files with me. Build an environment `env.yml` with:
+Install / set up miniconda:
 
-```bash
-conda env create -f env.yml
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+rm -f Miniconda3-latest-Linux-x86_64.sh
 ```
 
-And update with:
-
-```bash
-conda env update -f env.yml --prune
-```
-
-where the ``--prune`` flag will remove any dependencies that are no longer required.
+You'll be prompted to answer some questions as part of the Miniconda install process. Nothing too taxing, I promise ;-)
 
 ## Windows Terminal Settings
 
@@ -149,14 +148,8 @@ TODO: add this to the `bootstrap.sh` script.
 First time running on WSL:
 
 1. Clone `dotfiles` repo to ~/repos directory
-2. Install zsh: `sudo apt update` and `sudo apt install zsh`. Now run `zsh` to launch the zsh shell
-3. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
-4. Install Oh-My-Zsh:
-```
-sudo apt install git-core curl fonts-powerline
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-5. Install zsh syntax highlighting plugin:
-```
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
+2. Run `bootstrap.sh`: cd to `~/repos/dotfiles` and run `bash bootstrap.sh` to create sym links
+3. Install broot (see above)
+4. Install miniconda3 (see above)
+5. Install dotnet core with `sudo apt-get install -y dotnet-runtime-2.1` (more details: [here](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-))
+6. Install azure cli (see [docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt))
