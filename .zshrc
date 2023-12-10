@@ -52,6 +52,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+export EDITOR='code'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -186,8 +187,47 @@ alias system-edit
 
 source $HOME/.config/broot/launcher/bash/br
 
-# add environment variables for AML
-export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
+# function that sets workspaces for AML given workspace name as input
+set-ws() {
+    if [ $# -ne 0 ]; then
+        if [ $1 = "alex" ]; then
+            export WS="Alexander256V100"
+            export RG="Alexander256"
+            export SUB_ID="79f57c16-00fe-48da-87d4-5192e86cd047"
+        elif [ $1 = "babel-a100-reference" ]; then
+            export WS="BabelA100WUS3Reference"
+            export RG="BabelA100Reference"
+            export SUB_ID="79f57c16-00fe-48da-87d4-5192e86cd047"
+        elif [ $1 = "babel-a100-wus3" ]; then
+            export WS="BabelA100WUS3"
+            export RG="BabelA100"
+            export SUB_ID="79f57c16-00fe-48da-87d4-5192e86cd047"
+        elif [ $1 = "babel-a100-reference-cus" ]; then
+            export WS="BabelA100CUSReference"
+            export RG="BabelA100Reference"
+            export SUB_ID="79f57c16-00fe-48da-87d4-5192e86cd047"
+        elif [ $1 = "dl-benchmark-eus" ]; then
+            export WS="dl-benchmark-eus"
+            export RG="dl-benchmark-rg"
+            export SUB_ID="48bbc269-ce89-4f6f-9a12-c6f91fcb772d"
+        elif [ $1 = "benchmark" ]; then
+            export WS="babel-benchmark"
+            export RG="babel-benchmark-rg"
+            export SUB_ID="a1920ebd-59b7-4f19-af9f-5e80599e88e4"
+        else
+            echo "Invalid workspace name"
+        fi
+    else
+        echo "No workspace name provided. Valid names are:"
+        echo "- alex"
+        echo "- babel-a100-reference"
+        echo "- babel-a100-wus3"
+        echo "- babel-a100-reference-cus"
+        echo "- dl-benchmark-eus"
+        echo "- benchmark"
+    fi
+}
+
 
 project-elr2() {
     cd ~/repos/elr2
